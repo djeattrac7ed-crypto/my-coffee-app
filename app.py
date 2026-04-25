@@ -4,7 +4,7 @@ import streamlit as st
 if 'cart' not in st.session_state:
     st.session_state.cart = []
 
-st.title("☕ 선생님 커피 주문 취합기")
+st.title("☕ 선생님 커피 주문")
 st.write("메뉴와 옵션을 선택하고 장바구니에 담아주세요!")
 
 st.divider()
@@ -23,12 +23,12 @@ st.subheader("1. 메뉴 선택")
 menu = st.radio(
     "어떤 음료를 드시겠어요?", 
     [
-        "☕ 카페 아메리카노", 
-        "🍓 딸기 딜라이트 요거트 블렌디드", 
-        "🍫 자바 칩 프라푸치노", 
-        "🍵 제주 말차 크림 프라푸치노", 
-        "🍑 자몽 허니 블랙 티",
-        "🧃 쿨 라임 피지오"
+        "아메리카노", 
+        "딸기 딜라이트 요거트 블렌디드", 
+        "자바 칩 프라푸치노", 
+        "제주 말차 크림 프라푸치노", 
+        "자몽 허니 블랙 티",
+        "쿨 라임 피지오"
     ]
 )
 
@@ -40,7 +40,7 @@ with col1:
     temp = st.radio("온도", ["❄️ ICE", "🔥 HOT"])
 
 with col2:
-    size = st.radio("사이즈", ["Tall (기본)", "Grande (+500원)", "Venti (+1000원)"])
+    size = st.radio("사이즈", ["Tall (기본)", "Grande", "Venti"])
 
 # 4. 장바구니 담기 버튼
 st.write("") 
