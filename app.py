@@ -6,10 +6,9 @@ if 'cart' not in st.session_state:
 
 st.set_page_config(page_title="선생님 전용 사이렌 오더", layout="centered")
 st.title("☕ 음료 오더")
-st.info("💡 사진을 터치한 뒤, 오른쪽 위 화살표(⤢)를 누르면 크게 볼 수 있어요!")
 
 # --- 📸 1단계: 메뉴판 확인 (모든 사진 펼쳐보기) ---
-st.subheader("📸 이번 주 카페 메뉴판")
+st.subheader("📸 메뉴판")
 
 # 사진 파일 이름들을 리스트로 만듭니다. (파일이 더 있다면 뒤에 계속 추가 가능)
 menu_files = ["menu1.jpg", "menu2.jpg"]
@@ -28,10 +27,10 @@ col_who, col_what = st.columns(2)
 with col_who:
     teacher_class = st.selectbox(
         "주문자 선택", 
-        ["선택", "1반", "2반", "3반", "4반", "5반", "6반", "전담/부장"]
+        ["선택", "1반", "2반", "3반", "4반", "5반", "6반"]
     )
 with col_what:
-    menu_name = st.text_input("메뉴명 입력", placeholder="예: 아메리카노")
+    menu_name = st.text_input("메뉴명 입력", placeholder="예: 아메리카노, 고구마케이크")
 
 st.divider()
 
