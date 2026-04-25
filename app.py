@@ -4,7 +4,7 @@ import streamlit as st
 if 'cart' not in st.session_state:
     st.session_state.cart = []
 
-st.title("☕ 선생님 음료 오더")
+st.title("☕ 음료 오더")
 st.info("💡 한 분이 여러 잔을 주문하시려면, 메뉴를 고르고 '담기'를 반복해 주세요!")
 
 # --- 📸 1단계: 공용 메뉴판 (탭 기능) ---
