@@ -4,7 +4,7 @@ import streamlit as st
 if 'cart' not in st.session_state:
     st.session_state.cart = []
 
-st.title("☕ 우리 팀 스마트 사이렌 오더")
+st.title("☕ 우리 1학년 스마트 사이렌 오더")
 st.write("메뉴판 사진을 확인하고, 원하시는 메뉴와 옵션을 담아주세요!")
 
 st.divider()
@@ -64,11 +64,11 @@ with c1:
     temp = st.radio("온도", ["❄️ ICE", "🔥 HOT"])
 
 with c2:
-    size = st.radio("사이즈", ["Tall", "Grande", "Venti"])
+    size = st.radio("사이즈", ["소(기본)", "중", "대"])
 
 with c3:
     # 요청하신 '당도' 옵션을 추가했습니다.
-    sweet = st.radio("당도(시럽)", ["기본", "달게", "덜 달게"])
+    sweet = st.radio("당도(시럽)", ["기본", "덜 달게", "달게"])
 
 st.write("")
 
