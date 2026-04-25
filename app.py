@@ -11,14 +11,31 @@ st.divider()
 
 # --- (위쪽 장바구니 준비 및 타이틀 코드는 동일) ---
 
-# --- 📸 1단계: 공용 메뉴판 보여주기 (수정된 부분!) ---
+# --- (위쪽 장바구니 준비 및 타이틀 코드는 동일) ---
+
+# --- 📸 1단계: 여러 장의 공용 메뉴판 보여주기 (탭 기능 적용) ---
 st.subheader("📸 이번 주 카페 메뉴판")
 
-try:
-    # 깃허브에 올린 파일 이름과 똑같이 적어주셔야 합니다! (예: menu.jpg)
-    st.image("menu.jpg", use_container_width=True, caption="위 메뉴를 보고 아래에서 주문해 주세요.")
-except:
-    st.info("⚠️ 아직 관리자가 메뉴판 사진을 등록하지 않았거나, 파일 이름이 다릅니다. (menu.jpg 확인)")
+# 사진 개수에 맞춰서 탭(버튼)을 만듭니다.
+tab1, tab2, tab3 = st.tabs(["메뉴 1페이지", "메뉴 2페이지", "메뉴 3페이지"])
+
+with tab1:
+    try:
+        st.image("menu1.jpg", use_container_width=True)
+    except:
+        st.info("⚠️ menu1.jpg 파일을 찾을 수 없습니다.")
+
+with tab2:
+    try:
+        st.image("menu2.jpg", use_container_width=True)
+    except:
+        st.info("⚠️ menu2.jpg 파일을 찾을 수 없습니다.")
+
+with tab3:
+    try:
+        st.image("menu3.jpg", use_container_width=True)
+    except:
+        st.info("⚠️ menu3.jpg 파일을 찾을 수 없습니다.")
 
 st.divider()
 
