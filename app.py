@@ -9,24 +9,20 @@ st.write("메뉴판 사진을 확인하고, 원하시는 메뉴와 옵션을 담
 
 st.divider()
 
-# --- 📸 1단계: 여러 장의 메뉴판 사진 올리기 ---
-st.subheader("📸 메뉴판 확인하기")
-uploaded_files = st.file_uploader(
-    "메뉴판 사진들을 한꺼번에 올릴 수 있어요 (여러 장 선택 가능)", 
-    type=['jpg', 'png', 'jpeg'], 
-    accept_multiple_files=True
-)
+# --- (위쪽 장바구니 준비 및 타이틀 코드는 동일) ---
 
-if uploaded_files:
-    # 사진들을 가로로 나열해서 보여줍니다 (최대 3열)
-    cols = st.columns(3)
-    for idx, file in enumerate(uploaded_files):
-        with cols[idx % 3]:
-            st.image(file, use_container_width=True, caption=f"메뉴판 {idx+1}")
-else:
-    st.info("좌측 상단에서 메뉴판 사진을 업로드하면 여기에 나타납니다.")
+# --- 📸 1단계: 공용 메뉴판 보여주기 (수정된 부분!) ---
+st.subheader("📸 이번 주 카페 메뉴판")
+
+try:
+    # 깃허브에 올린 파일 이름과 똑같이 적어주셔야 합니다! (예: menu.jpg)
+    st.image("menu.jpg", use_container_width=True, caption="위 메뉴를 보고 아래에서 주문해 주세요.")
+except:
+    st.info("⚠️ 아직 관리자가 메뉴판 사진을 등록하지 않았거나, 파일 이름이 다릅니다. (menu.jpg 확인)")
 
 st.divider()
+
+# --- (이 아래부터 2단계 주문자 입력 부분은 동일하게 이어집니다) ---
 
 # --- 👤 2단계: 주문자 및 메뉴 입력 ---
 col_name, col_menu = st.columns(2)
