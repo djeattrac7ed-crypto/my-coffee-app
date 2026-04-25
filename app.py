@@ -19,18 +19,42 @@ teacher_class = st.selectbox(
 st.divider()
 
 # 2. 메뉴 선택 영역
+
+st.divider()
+
+# 📸 새롭게 추가된 'AI 이미지 인식' 영역
+st.subheader("📸 메뉴판 사진 업로드")
+uploaded_file = st.file_uploader("새로운 카페의 메뉴판 사진을 올려주세요.", type=['jpg', 'png', 'jpeg'])
+
+# 메뉴를 저장할 빈 바구니(세션 상태) 만들기
+if 'dynamic_menu' not in st.session_state:
+    st.session_state.dynamic_menu = ["선택해주세요", "☕ 아메리카노", "🥛 카페라떼"] # 기본 메뉴
+
+# 사진이 업로드 되었다면?
+if uploaded_file is not None:
+    # 올린 사진을 화면에 작게 보여줍니다.
+    st.image(uploaded_file, caption="업로드된 메뉴판", width=300)
+    
+    if st.button("🤖 AI로 메뉴 읽어오기"):
+        with st.spinner("AI가 메뉴판의 글씨를 열심히 읽고 있습니다..."):
+            import time
+            time.sleep(2) # AI가 생각하는 것처럼 2초간 뜸을 들입니다.
+            
+            # 🌟 [핵심] 실제로는 여기서 AI에게 사진을 보내고 결과를 받아옵니다!
+            # 지금은 사진을 올리면 무조건 아래 메뉴로 바뀌도록 설정해 두었습니다.
+            new_menus = ["선택해주세요", "🧋 흑당 버블티", "🍵 쌍화차", "☕ 다방 커피", "🍓 생딸기 주스"]
+            
+            # 새로 받아온 메뉴로 기존 메뉴판을 갈아끼웁니다!
+            st.session_state.dynamic_menu = new_menus
+            st.success("✨ 새로운 메뉴판 인식 완료!")
+
+st.divider()
+
+# 2. 메인 메뉴 선택 (고정된 글자가 아니라, 사진을 올리면 바뀌는 변수를 넣습니다)
 st.subheader("1. 메뉴 선택")
-menu = st.radio(
-    "어떤 음료를 드시겠어요?", 
-    [
-        "아메리카노", 
-        "딸기 딜라이트 요거트 블렌디드", 
-        "자바 칩 프라푸치노", 
-        "제주 말차 크림 프라푸치노", 
-        "자몽 허니 블랙 티",
-        "쿨 라임 피지오"
-    ]
-)
+menu = st.selectbox("음료를 선택하세요", st.session_state.dynamic_menu)
+
+# --- (이 아래부터 3번 옵션 선택, 4번 장바구니 코드는 기존과 동일하게 이어집니다) ---
 
 # 3. 옵션 선택 영역
 st.subheader("2. 옵션 선택")
